@@ -33,7 +33,7 @@ public class MainController {
                 String message = String.join("", Collections.nCopies(currDepth, "</ul>"));
                 result += message;
             }
-            result += "<li>"+ s.getName() + "</li>";
+            result += "<li>Id: "+s.getId() +" Name: <b>"+ s.getName() + "</b></li>";
             currDepth = s.getDepth();
         }
         result += "</ul>";
@@ -42,10 +42,10 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/add")
-    public String add(@RequestParam(value = "name") String name, @RequestParam(value = "boss") String boss){
+    public String add(@RequestParam(value = "name") String name, @RequestParam(value = "id") Integer id){
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         EmployeeJDBCTemplate employeeJDBCTemplate = (EmployeeJDBCTemplate)context.getBean("employeeJDBCTemplate");
-        employeeJDBCTemplate.create(name, boss);
+        employeeJDBCTemplate.create(name, id);
         return "Employee added";
     }
 
