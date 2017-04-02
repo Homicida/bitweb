@@ -13,7 +13,7 @@ import java.util.*;
 @Controller
 public class MainController {
     @ResponseBody
-    @RequestMapping(value = "/employee", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String home(Model model) throws IOException{
         ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
 
